@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Navigation, Footer, Home, About, Contact } from "./components";
 import { Meetups } from "./components/categories";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

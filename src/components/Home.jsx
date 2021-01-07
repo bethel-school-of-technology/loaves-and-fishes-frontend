@@ -18,17 +18,17 @@ function Home() {
           </div>
           <div class="categories">
             {/* adds buttons to be clicked to take you to a category */}
-            <div class="button1">
+            <div class="button1" className='mb-1'>
                 <Button variant="outline-dark" active href="./Meetups">
-                  cat1
+                  New Meetups
                 </Button>
             </div>
-            <div class="button2">
+            <div class="button2" className='mb-1'>
                 <Button variant="outline-dark" active>
                   cat2
                 </Button>
             </div>
-            <div class="button3">
+            <div class="button3" className='mb-1'>
                 <Button variant="outline-dark" active>
                   cat2
                 </Button>
