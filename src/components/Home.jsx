@@ -1,40 +1,39 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import { Meetups } from './categories';
+// Below is how you import a style sheet into a component from the stylesheets folder
+import "./Stylesheets/Home.css";
 
 function Home() {
   return (
     <div className="home">
       <div class="container">
-        <div class="row align-items-center my-5">
+
+        <div className="hometext">
           <div class="col-lg-5">
             <h1 class="font-weight-light">Home</h1>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Help meet a need.
             </p>
           </div>
-          <div class="categories">
+        </div>
+
+        {/* Seperated out the hometext and categories for css styling  */}
+
+        <div class="categories">
             {/* adds buttons to be clicked to take you to a category */}
             <div class="button1" className='mb-1'>
-                <Button variant="outline-dark" active href="./Meetups">
-                  New Meetups
+                <Button variant="outline-dark" active href="./ViewNeeds">
+                  View Needs
                 </Button>
             </div>
+
             <div class="button2" className='mb-1'>
-                <Button variant="outline-dark" active>
-                  cat2
-                </Button>
-            </div>
-            <div class="button3" className='mb-1'>
-                <Button variant="outline-dark" active>
-                  cat2
+                <Button variant="outline-dark" active href="./SubmitNeed">
+                  Submit Need
                 </Button>
             </div>
           </div>
-        </div>
+
       </div>
     </div>
   );

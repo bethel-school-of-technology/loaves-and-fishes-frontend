@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Footer, Home, About, Contact } from "./components";
-import { Meetups } from "./components/categories";
+import { Navigation, Footer, Home, About, Contact, Account } from "./components";
+import { ViewNeeds, SubmitNeed } from "./components/categories";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -13,7 +13,9 @@ function App() {
           <Route path="/" exact component={() => <Home />} />
           <Route path="/about" exact component={() => <About /> } />
           <Route path="/contact" exact component={() => <Contact /> } />
-          <Route path="/meetups" exact component={() => <Meetups /> } />
+          <Route path="/viewneeds" exact component={() => <ViewNeeds /> } />
+          <Route path="/submitneed" exact component={() => <SubmitNeed /> } />
+          <Route path="/account" exact component={() => <Account /> } />
         </Switch>
         <Footer />
       </Router>

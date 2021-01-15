@@ -6,7 +6,7 @@ function Navigation(props) {
         <div className="navigation">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <Link class="navbar-brand" to="/">
-                    Loaves and Fishes
+                    Loaves and Fish
                 </Link>
                 <button
                 class="navbar-toggler"
@@ -31,6 +31,29 @@ function Navigation(props) {
                                 <span class="sr-only">(current)</span>
                             </Link>
                         </li>
+
+                        <li
+                        class={`nav-item ${
+                            props.location.pathname === "/ViewNeeds" ? "active" : ""
+                        }`}
+                        >
+                            <Link class="nav-link" to="/viewneeds">
+                                View Needs
+                                <span class="sr-only">(current)</span>
+                            </Link>
+                        </li>
+
+                        <li
+                        class={`nav-item ${
+                            props.location.pathname === "/SubmitNeed" ? "active" : ""
+                        }`}
+                        >
+                            <Link class="nav-link" to="/submitneed">
+                                Submit Need
+                                <span class="sr-only">(current)</span>
+                            </Link>
+                        </li>
+
                         <li
                             class={`nav-item ${
                                 props.location.pathname === "/about" ? "active" : ""
@@ -47,6 +70,17 @@ function Navigation(props) {
                         >
                             <Link class="nav-link" to="/contact">
                                 Contact
+                            </Link>
+                        </li>
+
+                        <li
+                        class={`nav-item ${
+                            props.location.pathname === "/Account" ? "active" : ""
+                        }`}
+                        >
+                            <Link class="nav-link" to="/account">
+                                Account
+                                <span class="sr-only">(current)</span>
                             </Link>
                         </li>
 

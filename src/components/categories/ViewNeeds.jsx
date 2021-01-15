@@ -1,12 +1,12 @@
 import React from "react";
-// this is a place holder category, this can be edited and changed or used as a template to create a new one.
-function Meetups () {
+// View A need post.
+function ViewNeeds () {
     return (
-    <div className="meetups">
+    <div className="viewneeds">
         <div class="container">
             <div class="row align-items-center my-5">
                 <div class="col-lg-5">
-                <h1 class="font-weight-light">MeetUp</h1>
+                <h1 class="font-weight-light" >View Needs</h1>
             <p>
              Meetups is a list of people in your area looking to start a meetup.
             </p>
@@ -18,4 +18,4 @@ function Meetups () {
 }
 
 
-export default Meetups;
+export default ViewNeeds;
