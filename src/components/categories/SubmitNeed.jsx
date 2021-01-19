@@ -1,4 +1,5 @@
 import React from "react";
+
 // Submit A need forum post.
 function SubmitNeed () {
     return (
@@ -7,9 +8,12 @@ function SubmitNeed () {
             <div class="row align-items-center my-5">
                 <div class="col-lg-5">
                 <h1 class="font-weight-light">Submit Need</h1>
-            <p>
-             TEMP TEXT
-            </p>
+
+    <p id="example"></p>
+    <p id="example2"></p>
+    <p id="example3"></p>
+
+    <script src="script.js" type="text/javascript"></script>
                 </div>
             </div>
         </div>

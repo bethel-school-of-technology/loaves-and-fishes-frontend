@@ -1,0 +1,28 @@
+{
+  "needs": [
+    {
+      "id": 1,
+      "name": "Joanna",
+      "postContent": "I really need a million dollars",
+      "city": "Saint Paul",
+      "category": "Financial",
+      "amount": "1,000,000"
+    },
+    {
+      "id": 2,
+      "name": "Joanna",
+      "postContent": "I really need a million dollars",
+      "city": "Saint Paul",
+      "category": "Financial",
+      "amount": "1,000,000"
+    },
+    {
+      "id": 3,
+      "name": "Joanna",
+      "postContent": "I really need a million dollars",
+      "city": "Saint Paul",
+      "category": "Financial",
+      "amount": "1,000,000"
+    }
+  ]
+}
