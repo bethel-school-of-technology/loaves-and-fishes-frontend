@@ -23,14 +23,6 @@
       "city": "Saint Paul",
       "category": "Financial",
       "amount": "1,000,000"
-    },
-    {
-      "name": "test",
-      "postContent": "test",
-      "city": "test",
-      "category": "test",
-      "amount": "1234",
-      "id": 4
     }
   ]
 }
