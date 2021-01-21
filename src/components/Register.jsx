@@ -4,7 +4,6 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import Login from './Login';
 import "./Stylesheets/Register.css";
 
 class Register extends Component {
@@ -23,7 +22,7 @@ class Register extends Component {
   handleClick(event,role){
     var apiBaseUrl = "http://localhost:8080/api/user/register";
     // console.log("values in register handler",role);
-    var self = this;
+   
     //To be done:check for empty values before hitting submit
     if(this.state.firstName.length>0 && this.state.lastName.length>0 && this.state.username.length>0 && this.state.password.length>0){
       var payload={
