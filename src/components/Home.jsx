@@ -1,7 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 // Below is how you import a style sheet into a component from the stylesheets folder
-import "./stylesheets/Home.css";
+import "./Stylesheets/Home.css";
 
 function Home() {
   return (
