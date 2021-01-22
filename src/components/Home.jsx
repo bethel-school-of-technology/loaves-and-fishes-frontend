@@ -1,18 +1,17 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-// import "./stylesheets/Home.css";
-// Below is how you import a style sheet into a component from the stylesheets folder
+
 
 
 function Home() {
   return (
-    <div className="home">
+    <div className="home" >
       <div class="container">
 
-        <div className="hometext">
-          <div class="col-lg-5">
+        <div className="hometext" >
+          <div class="col-lg-5" style={{ display: 'grid', justifyContent: 'center', margin: 'auto'}}>
             <h1 class="font-weight-light">Home</h1>
-            <p>
+            <p style={{ display: 'flex', justifyContent: 'center', margin: 'auto'}}>
               Help meet a need.
             </p>
           </div>
@@ -20,9 +19,9 @@ function Home() {
 
         {/* Seperated out the hometext and categories for css styling  */}
 
-        <div class="categories">
+        <div class="categories" style={{ display: 'flex', justifyContent: 'center', margin: 'auto'}}>
             {/* adds buttons to be clicked to take you to a category */}
-            <div class="button1" className='mb-1'>
+            <div class="button1" className='mr-1'>
                 <Button variant="outline-dark" active href="./ViewNeeds">
                   View Needs
                 </Button>

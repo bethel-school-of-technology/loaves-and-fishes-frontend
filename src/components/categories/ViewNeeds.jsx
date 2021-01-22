@@ -48,9 +48,9 @@ function ViewNeeds() {
     return (
         <div className="viewneeds">
             <div class="container">
-                <div class="row align-items-center my-5">
+                <div class="row align-items-center my-4" style={{ display: 'flex', justifyContent: 'center', margin: 'auto'}}>
                     <div class="col-lg-5">
-                        <h1 class="font-weight-light" >View Needs</h1>
+                        <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', margin: 5 }}>View Needs</h1>
 
                         <ul>
                             {
