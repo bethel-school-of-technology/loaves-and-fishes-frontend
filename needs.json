@@ -6,15 +6,19 @@
       "postContent": "I really need a million dollars",
       "city": "Saint Paul",
       "category": "Financial",
-      "amount": "1,000,000"
+      "amount": "1,000,000",
+      "email": "joanna.neitzell@gmail.com",
+      "phoneNumber": "507-219-7073"
     },
     {
       "id": 2,
-      "name": "Joanna",
+      "name": "joanna.neitzell@gmail.com",
       "postContent": "I really need a million dollars",
       "city": "Saint Paul",
       "category": "Financial",
-      "amount": "1,000,000"
+      "amount": "1,000,000",
+      "email": "joanna.neitzell@gmail.com",
+      "phoneNumber": "507-219-7073"
     },
     {
       "id": 3,
@@ -22,7 +26,9 @@
       "postContent": "I really need a million dollars",
       "city": "Saint Paul",
       "category": "Financial",
-      "amount": "1,000,000"
+      "amount": "1,000,000",
+      "email": "joanna.neitzell@gmail.com",
+      "phoneNumber": "507-219-7073"
     },
     {
       "name": "test",
@@ -30,7 +36,19 @@
       "city": "test",
       "category": "test",
       "amount": "1234",
-      "id": 4
+      "email": "joanna.neitzell@gmail.com",
+      "id": 4,
+      "phoneNumber": "507-219-7073"
+    },
+    {
+      "name": "jo",
+      "postContent": "Looking for work",
+      "city": "Eagan",
+      "category": "job",
+      "amount": "",
+      "email": "joanna.neitzell@gmail.com",
+      "id": 5,
+      "phoneNumber": "507-219-7073"
     }
   ]
 }
