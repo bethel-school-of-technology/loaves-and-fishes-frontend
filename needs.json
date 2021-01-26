@@ -23,6 +23,16 @@
       "city": "Saint Paul",
       "category": "Financial",
       "amount": "1,000,000"
+    },
+    {
+      "name": "test",
+      "postContent": "test",
+      "city": "test",
+      "category": "test",
+      "amount": "24432",
+      "email": "bobby@jones.test",
+      "phoneNumber": "5554443232",
+      "id": 4
     }
   ]
 }

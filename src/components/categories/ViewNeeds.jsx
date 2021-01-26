@@ -6,6 +6,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 //from material UI
 const useStyles = makeStyles({
     root: {
@@ -63,27 +65,55 @@ function ViewNeeds() {
                                                     {need.name}
                                                 </Typography>
                                                 <Typography variant="h5" component="h2">
-                                                    {need.postContent}
-                                                </Typography>
-                                                <Typography className={classes.pos} color="textSecondary">
                                                     {need.category}
                                                 </Typography>
-                                                <Typography variant="body2" component="p">
-                                                    {need.city}
-                                                    <br />
-                                                    {'"Need Amount"'}
-                                                </Typography>
+
                                                 <Typography className={classes.pos} color="textSecondary">
+                                                    {'Description:'}
+                                                    <br />
+                                                    {need.postContent}
+
+                                                </Typography>
+
+                                                <Typography variant="body2" component="p">
+
+                                                    {'Location:'}
+                                                    <br />
+                                                    {need.city}
+
+                                                </Typography>
+                                                <br />
+                                                <Typography className={classes.pos} color="textSecondary">
+
+                                                    {'Need Amount:'}
+                                                    <br />
                                                     {need.amount}
                                                 </Typography>
-                                            </CardContent>
 
+                                                <CardActions>
+                                                    <Button onClick={() => { alert("Name: " + need.name + "  Email: " + need.email + " Phone: " + need.phoneNumber) }}>Help Meet This Need</Button>
+
+
+                                                </CardActions>
+
+  
+                                            
+      <CardActions disableSpacing>
+        <IconButton  aria-label="add to favorites">
+       
+          <FavoriteIcon />
+        </IconButton>
+        </CardActions>
+                                            </CardContent>
                                         </Card>
+ //onChange={(e)=>setFavorites(e.target.value)}
+ //onSubmit={handleSubmit}
                                     )
                                 })
                             }
 
                         </ul>
+
 
 
                     </div>
