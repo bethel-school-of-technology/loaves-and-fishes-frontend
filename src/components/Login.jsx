@@ -4,6 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 import "./Stylesheets/Register.css";
 
 
@@ -32,22 +33,20 @@ class Login extends Component {
             />
             <br />
             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)} />
-            <RaisedButton label="Get" primary={true} style={style} onClick={(event) => this.handleGet(event)} />
-
           </div>
         </div>
       </MuiThemeProvider>
     )
     this.state = {
+      redirect: null,
       username: '',
       password: '',
       loginComponent: localloginComponent,
     }
   }
-
-  handleGet() {
-
-
+  
+  setNewRedirectState() {
+    this.setState({ redirect: "/" });
   }
 
   handleClick(event) {
@@ -55,21 +54,16 @@ class Login extends Component {
       "username": this.state.username,
       "password": this.state.password
     }
-
-
-
+    var self = this;
     axios.post(apiBaseUrl, payload)
       .then(function (response) {
         console.log(response);
-        if (response.data === "good") {
-          console.log("Login successfull");
-
-        }
-        else if (response.status === 200) {
-          if (response.headers.authorization) {
+          if (response.status === 200) {
+            if (response.headers.authorization) {
             console.log("login success");
             localStorage.setItem("loginToken", response.headers.authorization);
-          } else { 
+              self.setState({ redirect: "/" });
+            } else { 
             console.log("Username password do not match");
             alert(response.data.success)
           }
@@ -88,6 +82,9 @@ class Login extends Component {
 
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
     return (
       <div>
         <MuiThemeProvider className="field">

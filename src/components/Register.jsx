@@ -4,12 +4,14 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 import "./Stylesheets/Register.css";
 
 class Register extends Component {
   constructor(props){
     super(props);
-    this.state={
+    this.state = {
+      redirect: null,
       firstName:'',
       lastName:'',
       username:'',
@@ -19,39 +21,42 @@ class Register extends Component {
   componentWillReceiveProps(nextProps){
     console.log("nextProps",nextProps);
   }
-  handleClick(event,role){
+  handleClick(event, role) {
     var apiBaseUrl = "http://localhost:8080/api/user/register";
     // console.log("values in register handler",role);
    
     //To be done:check for empty values before hitting submit
-    if(this.state.firstName.length>0 && this.state.lastName.length>0 && this.state.username.length>0 && this.state.password.length>0){
-      var payload={
-      "firstName": this.state.firstName,
-      "lastName":this.state.lastName,
-      "username":this.state.username,
-      "password":this.state.password,
+    if (this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.username.length > 0 && this.state.password.length > 0) {
+      var payload = {
+        "firstName": this.state.firstName,
+        "lastName": this.state.lastName,
+        "username": this.state.username,
+        "password": this.state.password,
       }
+      var self = this;
       axios.post(apiBaseUrl, payload)
-     .then(function (response) {
-       console.log(response);
-       if(response.data === "good"){
-        //  console.log("registration successfull");
-       }
-       else{
-         console.log("some error ocurred",response.data.code);
-       }
-     })
-     .catch(function (error) {
-       console.log(error);
-     });
-    }
-    else{
-      alert("Input field value is missing");
-    }
+        .then(function (response) {
+          console.log(response);
+          if (response.status === 200) {
+              console.log("Register success");
+              localStorage.setItem("loginToken", response.headers.authorization);
+              self.setState({ redirect: "/login" });
+          }
+          else {
+            console.log("Error logging in");
+            alert("Error logging in");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
+    }
   }
   render() {
-    // console.log("props",this.props);
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    }
    
     return (
       <div>
