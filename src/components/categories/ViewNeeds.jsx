@@ -8,76 +8,28 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-//import TextField from '@material-ui/core/TextField';
-//import Autocomplete from '@material-ui/lab/Autocomplete';
 
-
-
-  
-  // for search autocomplete: Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-//   const top100Films = [
-//     { title: 'The Shawshank Redemption', year: 1994 },
-//     { title: 'The Godfather', year: 1972 },
-//     { title: 'The Godfather: Part II', year: 1974 },
-//     { title: 'The Dark Knight', year: 2008 },
-//     { title: '12 Angry Men', year: 1957 },
-//     { title: 'Toy Story', year: 1995 },
-//     { title: 'Bicycle Thieves', year: 1948 },
-//     { title: 'The Kid', year: 1921 },
-//     { title: 'Inglourious Basterds', year: 2009 },
-//     { title: 'Snatch', year: 2000 },
-//     { title: '3 Idiots', year: 2009 },
-//     { title: 'Monty Python and the Holy Grail', year: 1975 },
-//   ];
 // Add Post to Favorites.
 //function addToFavorites() {
- //   const [favorites, setFavorites] = useState("")
+//   const [favorites, setFavorites] = useState("")
 
-  //  const handleSubmit = (e) => {
-  //      e.preventDefault();
- //       const favorites = {
-  //           favorites
-    //      };
- //         console.log(favorites)
-      //linking axios to back end using json as temp.
-  //        axios.post(`http://localhost:3000/favorites`,  favorites )
-    //        .then(res => {
-   //           console.log(res);
-             // console.log(res.data);
-  //          })
- //   }
-
-
-
-  /*   <div style={{ width: 300 }}>
-    
-      Search bar with autocomplete to search by category <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        options={top100Films.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
-        )}
-      />
-      <Autocomplete
-        freeSolo
-        id="free-solo-2-demo"
-        disableClearable
-        options={top100Films.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search input"
-            margin="normal"
-            variant="outlined"
-            InputProps={{ ...params.InputProps, type: 'search' }}
-          />
-        )}
-      /
-    </div> */
+//  const handleSubmit = (e) => {
+//      e.preventDefault();
+//       const favorites = {
+//           favorites
+//      };
+//         console.log(favorites)
+//linking axios to back end using json as temp.
+//        axios.post(`http://localhost:3000/favorites`,  favorites )
+//        .then(res => {
+//           console.log(res);
+// console.log(res.data);
+//          })
+//   }
 
 
-//from material UI
+
+//from material UI for cards
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -104,26 +56,54 @@ function ViewNeeds() {
 
     //Axios - Gets need post from needs.json, hook up to back-end
     const [needs, setNeeds] = useState([]);
+    const [needFavorite, setNeedFavorite] = useState([])
+
     useEffect(() => {
         axios.get("http://localhost:3000/needs")
             .then(response => {
                 console.log(response);
                 if (response.status === 200) {
                     setNeeds(response.data);
+                    let temporary = []
+                    needs.forEach(need => {
+                        temporary.push(false)
+
+                    })
+                    setNeedFavorite(temporary)
+                   // localStorage.setItem("favorites", JSON.stringify([]))
                 }
             })
     }, [])
 
+    const addFavorites = (e, need) => {
+        console.log(need)
+        let favoriteNeedIndex = needs.map(n => { return n.name }).indexOf(need.name);
+        console.log(needFavorite[favoriteNeedIndex]);
+        if (needFavorite[favoriteNeedIndex] === false) {
+            needFavorite[favoriteNeedIndex] = true;
+            if (localStorage.getItem("favorites")){
+                let currentNeeds = JSON.parse(localStorage.getItem("favorites"))
+                console.log(currentNeeds)
+                currentNeeds.push(need);
+                localStorage.setItem("favorites", JSON.stringify(currentNeeds))
+
+            } else {
+                let temp = []
+                temp.push(need); 
+                localStorage.setItem("favorites", JSON.stringify(temp))
+            }
+        }
+    }
 
 
     //:mailto
-   // const Mailto = ({ email, subject = '', body = '', children }) => {
-  //      let params = subject || body ? '?' : '';
-   //     if (subject) params += `subject=${encodeURIComponent(subject)}`;
-  //      if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
+    // const Mailto = ({ email, subject = '', body = '', children }) => {
+    //      let params = subject || body ? '?' : '';
+    //     if (subject) params += `subject=${encodeURIComponent(subject)}`;
+    //      if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
 
-  //      return <a href={`mailto:${email}${params}`}>{children}</a>;
- //   };
+    //      return <a href={`mailto:${email}${params}`}>{children}</a>;
+    //   };
     //
 
     return (
@@ -174,18 +154,18 @@ function ViewNeeds() {
 
                                                 </CardActions>
 
-  
-                                            
-      <CardActions disableSpacing>
-        <IconButton  aria-label="add to favorites">
-       
-          <FavoriteIcon />
-        </IconButton>
-        </CardActions>
+
+
+                                                <CardActions disableSpacing>
+                                                    <IconButton aria-label="add to favorites" onClick={(e) => addFavorites(e, need)}>
+
+                                                        <FavoriteIcon />
+                                                    </IconButton>
+                                                </CardActions>
                                             </CardContent>
                                         </Card>
- //onChange={(e)=>setFavorites(e.target.value)}
- //onSubmit={handleSubmit}
+                                        //onChange={(e)=>setFavorites(e.target.value)}
+                                        //onSubmit={handleSubmit}
                                     )
                                 })
                             }
