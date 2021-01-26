@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Navigation, Footer, Home, About, Contact, Account, Login, Register } from "./components";
+import { Navigation, Footer, Home, About, Contact, Account, Login, Register, View } from "./components";
 import { ViewNeeds, SubmitNeed } from "./components/categories";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,6 +19,7 @@ function App() {
           <Route path="/account" exact component={() => <Account />} />
           <Route path="/login" exact component={() => <Login />} />
           <Route path="/register" exact component={() => <Register />} />
+          <Route path="/view" exact component={() => <View />} />
         </Switch>
         <Footer />
       </Router>

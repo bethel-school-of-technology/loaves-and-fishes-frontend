@@ -7,85 +7,95 @@ import axios from 'axios';
 import "./Stylesheets/Register.css";
 
 
-var apiBaseUrl = "http://localhost:8080";
+var apiBaseUrl = "http://localhost:8080/login";
 
 
 class Login extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    var localloginComponent=[];
+    var localloginComponent = [];
     localloginComponent.push(
       <MuiThemeProvider>
         <div className="field">
           <div className="formInput">
-          <TextField
-           hintText="Enter your Email"
-           floatingLabelText="Email"
-           onChange={(event,newValue) => this.setState({username:newValue})}
-           />
-         <br/>
-           <TextField
-             type="password"
-             hintText="Enter your Password"
-             floatingLabelText="Password"
-             onChange = {(event,newValue) => this.setState({password:newValue})}
-             />
-           <br/>
-          <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+            <TextField
+              hintText="Enter your Email"
+              floatingLabelText="Email"
+              onChange={(event, newValue) => this.setState({ username: newValue })}
+            />
+            <br />
+            <TextField
+              type="password"
+              hintText="Enter your Password"
+              floatingLabelText="Password"
+              onChange={(event, newValue) => this.setState({ password: newValue })}
+            />
+            <br />
+            <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)} />
+            <RaisedButton label="Get" primary={true} style={style} onClick={(event) => this.handleGet(event)} />
+
           </div>
         </div>
-       </MuiThemeProvider>
+      </MuiThemeProvider>
     )
-    this.state={
-      username:'',
-      password:'',
-      loginComponent:localloginComponent,
+    this.state = {
+      username: '',
+      password: '',
+      loginComponent: localloginComponent,
     }
   }
- 
- handleClick(event){
-    var payload={
-      "username":this.state.username,
-	    "password":this.state.password
-   }
 
-   if (/\S+@\S+\.\S+/i.test(payload.username)) {
+  handleGet() {
 
-     axios.post(apiBaseUrl, payload)
-       .then(function (response) {
-         console.log(response);
-         if (response.data === "good") {
-           console.log("Login successfull");
 
-         }
-         else if (response.data.code === 204) {
-           console.log("Username password do not match");
-           alert(response.data.success)
-         }
-         else {
-           console.log("Username does not exists");
-           alert("Username does not exist");
-         }
-       })
-       .catch(function (error) {
-         console.log(error);
-       });
-   }
-   else { alert("Improper Email Address"); }
-  
   }
- 
-    
-   
+
+  handleClick(event) {
+    var payload = {
+      "username": this.state.username,
+      "password": this.state.password
+    }
+
+
+
+    axios.post(apiBaseUrl, payload)
+      .then(function (response) {
+        console.log(response);
+        if (response.data === "good") {
+          console.log("Login successfull");
+
+        }
+        else if (response.status === 200) {
+          if (response.headers.authorization) {
+            console.log("login success");
+            localStorage.setItem("loginToken", response.headers.authorization);
+          } else { 
+            console.log("Username password do not match");
+            alert(response.data.success)
+          }
+        }
+        else {
+          console.log("Error logging in");
+          alert("Error logging in");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+
+
+
   render() {
     return (
       <div>
         <MuiThemeProvider className="field">
           <AppBar showMenuIconButton={false}
-             title="Login"
-           />
+            title="Login"
+          />
         </MuiThemeProvider>
-      
+
         {this.state.loginComponent}
       </div>
     );
