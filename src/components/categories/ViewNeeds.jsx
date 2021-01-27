@@ -76,7 +76,7 @@ function ViewNeeds() {
 
                     })
                     setNeedFavorite(temporary)
-                   // localStorage.setItem("favorites", JSON.stringify([]))
+                    // localStorage.setItem("favorites", JSON.stringify([]))
                 }
             })
     }, [])
@@ -87,7 +87,7 @@ function ViewNeeds() {
         console.log(needFavorite[favoriteNeedIndex]);
         if (needFavorite[favoriteNeedIndex] === false) {
             needFavorite[favoriteNeedIndex] = true;
-            if (localStorage.getItem("favorites")){
+            if (localStorage.getItem("favorites")) {
                 let currentNeeds = JSON.parse(localStorage.getItem("favorites"))
                 console.log(currentNeeds)
                 currentNeeds.push(need);
@@ -95,7 +95,7 @@ function ViewNeeds() {
 
             } else {
                 let temp = []
-                temp.push(need); 
+                temp.push(need);
                 localStorage.setItem("favorites", JSON.stringify(temp))
             }
         }
@@ -111,84 +111,94 @@ function ViewNeeds() {
     //      return <a href={`mailto:${email}${params}`}>{children}</a>;
     //   };
     //
+    if (localStorage.getItem("loginToken") === null) {
+        return (<div><h1>Sorry You must be Logged in.</h1>
+            <div class="button1" className='mr-1'>
+                <Button variant="outline-dark" active href="./Login">
+                    Login
+                </Button>
+            </div>
+        </div>
+        );
+    } else {
+        return (
+            <div className="viewneeds">
+                <div class="container">
+                    <div class="row align-items-center my-4" style={{ display: 'flex', justifyContent: 'center', margin: 'auto' }}>
+                        <div class="col-lg-5">
 
-    return (
-        <div className="viewneeds">
-            <div class="container">
-                <div class="row align-items-center my-4" style={{ display: 'flex', justifyContent: 'center', margin: 'auto'}}>
-                    <div class="col-lg-5">
 
+                            <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', margin: 5 }}>View Needs</h1>
 
-                        <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', margin: 5 }}>View Needs</h1>
+                            <ul>
+                                {
+                                    needs.map(need => {
 
-                        <ul>
-                            {
-                                needs.map(need => {
+                                        return (
+                                            <Card className={classes.root} variant="outlined">
+                                                <CardContent>
+                                                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                                        {need.name}
+                                                    </Typography>
+                                                    <Typography variant="h5" component="h2">
+                                                        {need.category}
+                                                    </Typography>
 
-                                    return (
-                                        <Card className={classes.root} variant="outlined">
-                                            <CardContent>
-                                                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                                    {need.name}
-                                                </Typography>
-                                                <Typography variant="h5" component="h2">
-                                                    {need.category}
-                                                </Typography>
+                                                    <Typography className={classes.pos} color="textSecondary">
+                                                        {'Description:'}
+                                                        <br />
+                                                        {need.postContent}
 
-                                                <Typography className={classes.pos} color="textSecondary">
-                                                    {'Description:'}
+                                                    </Typography>
+
+                                                    <Typography variant="body2" component="p">
+
+                                                        {'Location:'}
+                                                        <br />
+                                                        {need.city}
+
+                                                    </Typography>
                                                     <br />
-                                                    {need.postContent}
+                                                    <Typography className={classes.pos} color="textSecondary">
 
-                                                </Typography>
+                                                        {'Need Amount:'}
+                                                        <br />
+                                                        {need.amount}
+                                                    </Typography>
 
-                                                <Typography variant="body2" component="p">
-
-                                                    {'Location:'}
-                                                    <br />
-                                                    {need.city}
-
-                                                </Typography>
-                                                <br />
-                                                <Typography className={classes.pos} color="textSecondary">
-
-                                                    {'Need Amount:'}
-                                                    <br />
-                                                    {need.amount}
-                                                </Typography>
-
-                                                <CardActions>
-                                                    <Button onClick={() => { alert("Name: " + need.name + "  Email: " + need.email + " Phone: " + need.phoneNumber) }}>Help Meet This Need</Button>
+                                                    <CardActions>
+                                                        <Button onClick={() => { alert("Name: " + need.name + "  Email: " + need.email + " Phone: " + need.phoneNumber) }}>Help Meet This Need</Button>
 
 
-                                                </CardActions>
+                                                    </CardActions>
 
 
-  
 
-                                            
-                                                <CardActions disableSpacing>
-                                                    <IconButton aria-label="add to favorites" onClick={(e) => addFavorites(e, need)}>
 
-                                                        <FavoriteIcon />
-                                                    </IconButton>
-                                                </CardActions>
-                                            </CardContent>
-                                        </Card>
-                                        //onChange={(e)=>setFavorites(e.target.value)}
-                                        //onSubmit={handleSubmit}
-                                    )
-                                })
-                            }
 
-                        </ul>
+                                                    <CardActions disableSpacing>
+                                                        <IconButton aria-label="add to favorites" onClick={(e) => addFavorites(e, need)}>
 
+                                                            <FavoriteIcon />
+                                                        </IconButton>
+                                                    </CardActions>
+                                                </CardContent>
+                                            </Card>
+                                            //onChange={(e)=>setFavorites(e.target.value)}
+                                            //onSubmit={handleSubmit}
+                                        )
+                                    })
+                                }
+
+                            </ul>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    );
+        );
+    }
 }
 
 
