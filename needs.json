@@ -1,0 +1,36 @@
+{
+  "needs": [
+    {
+      "id": 3,
+      "name": "Joanna",
+      "postContent": "I really need a million dollars",
+      "city": "Saint Paul",
+      "category": "Financial",
+
+      "amount": "1,000,000"
+
+      "amount": "1,000,000",
+      "email": "joanna.neitzell@gmail.com",
+      "phoneNumber": "507-219-7073"
+    },
+    {
+      "name": "test",
+      "postContent": "test",
+      "city": "test",
+      "category": "test",
+      "amount": "1234",
+      "email": "joanna.neitzell@gmail.com",
+      "id": 4,
+      "phoneNumber": "507-219-7073"
+    },
+    {
+      "name": "Hi",
+      "postContent": "sadfd",
+      "city": "sadf",
+      "category": "asdf",
+      "amount": "2344",
+      "id": 5
+
+    }
+  ]
+}
