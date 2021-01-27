@@ -53,13 +53,15 @@ function ViewNeeds() {
     //added from material UI
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+    const token = { headers: { Authorization: localStorage.getItem('loginToken') } };
+    const postApi = "http://localhost:8080/needposts";
 
     //Axios - Gets need post from needs.json, hook up to back-end
     const [needs, setNeeds] = useState([]);
     const [needFavorite, setNeedFavorite] = useState([])
 
     useEffect(() => {
-        axios.get("http://localhost:3000/needs")
+        axios.get(postApi, token)
             .then(response => {
                 console.log(response);
                 if (response.status === 200) {
