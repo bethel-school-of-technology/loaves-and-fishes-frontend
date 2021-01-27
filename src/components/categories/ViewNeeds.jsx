@@ -8,7 +8,32 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+
 //from material UI
+
+
+// Add Post to Favorites.
+//function addToFavorites() {
+//   const [favorites, setFavorites] = useState("")
+
+//  const handleSubmit = (e) => {
+//      e.preventDefault();
+//       const favorites = {
+//           favorites
+//      };
+//         console.log(favorites)
+//linking axios to back end using json as temp.
+//        axios.post(`http://localhost:3000/favorites`,  favorites )
+//        .then(res => {
+//           console.log(res);
+// console.log(res.data);
+//          })
+//   }
+
+
+
+//from material UI for cards
+
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -32,26 +57,68 @@ function ViewNeeds() {
     //added from material UI
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
+    const token = { headers: { Authorization: localStorage.getItem('loginToken') } };
+    const postApi = "http://localhost:8080/needposts";
 
-//Axios - Gets need post from needs.json, hook up to back-end
+    //Axios - Gets need post from needs.json, hook up to back-end
     const [needs, setNeeds] = useState([]);
+    const [needFavorite, setNeedFavorite] = useState([])
+
     useEffect(() => {
-        axios.get("http://localhost:3000/needs")
+        axios.get(postApi, token)
             .then(response => {
                 console.log(response);
                 if (response.status === 200) {
                     setNeeds(response.data);
+                    let temporary = []
+                    needs.forEach(need => {
+                        temporary.push(false)
+
+                    })
+                    setNeedFavorite(temporary)
+                   // localStorage.setItem("favorites", JSON.stringify([]))
                 }
             })
     }, [])
 
+    const addFavorites = (e, need) => {
+        console.log(need)
+        let favoriteNeedIndex = needs.map(n => { return n.name }).indexOf(need.name);
+        console.log(needFavorite[favoriteNeedIndex]);
+        if (needFavorite[favoriteNeedIndex] === false) {
+            needFavorite[favoriteNeedIndex] = true;
+            if (localStorage.getItem("favorites")){
+                let currentNeeds = JSON.parse(localStorage.getItem("favorites"))
+                console.log(currentNeeds)
+                currentNeeds.push(need);
+                localStorage.setItem("favorites", JSON.stringify(currentNeeds))
 
+            } else {
+                let temp = []
+                temp.push(need); 
+                localStorage.setItem("favorites", JSON.stringify(temp))
+            }
+        }
+    }
+
+
+    //:mailto
+    // const Mailto = ({ email, subject = '', body = '', children }) => {
+    //      let params = subject || body ? '?' : '';
+    //     if (subject) params += `subject=${encodeURIComponent(subject)}`;
+    //      if (body) params += `${subject ? '&' : ''}body=${encodeURIComponent(body)}`;
+
+    //      return <a href={`mailto:${email}${params}`}>{children}</a>;
+    //   };
+    //
 
     return (
         <div className="viewneeds">
             <div class="container">
                 <div class="row align-items-center my-4" style={{ display: 'flex', justifyContent: 'center', margin: 'auto'}}>
                     <div class="col-lg-5">
+
+
                         <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', margin: 5 }}>View Needs</h1>
 
                         <ul>
@@ -96,6 +163,7 @@ function ViewNeeds() {
 
                                                 </CardActions>
 
+
   
                                             
       <CardActions disableSpacing>
@@ -108,18 +176,30 @@ function ViewNeeds() {
                                         </Card>
  //onChange={(e)=>setFavorites(e.target.value)}
  //onSubmit={handleSubmit}
+
+
+
+                                                <CardActions disableSpacing>
+                                                    <IconButton aria-label="add to favorites" onClick={(e) => addFavorites(e, need)}>
+
+                                                        <FavoriteIcon />
+                                                    </IconButton>
+                                                </CardActions>
+                                            </CardContent>
+                                        </Card>
+                                        //onChange={(e)=>setFavorites(e.target.value)}
+                                        //onSubmit={handleSubmit}
                                     )
                                 })
                             }
 
                         </ul>
 
-
-
                     </div>
                 </div>
             </div>
         </div>
+
     );
 }
 
