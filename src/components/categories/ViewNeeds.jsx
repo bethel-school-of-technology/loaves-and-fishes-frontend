@@ -9,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
+//from material UI
+
+
 // Add Post to Favorites.
 //function addToFavorites() {
 //   const [favorites, setFavorites] = useState("")
@@ -30,6 +33,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 //from material UI for cards
+
 const useStyles = makeStyles({
     root: {
         minWidth: 275,
@@ -158,6 +162,20 @@ function ViewNeeds() {
 
 
                                                 </CardActions>
+
+
+  
+                                            
+      <CardActions disableSpacing>
+        <IconButton  aria-label="add to favorites">
+       
+          <FavoriteIcon />
+        </IconButton>
+        </CardActions>
+                                            </CardContent>
+                                        </Card>
+ //onChange={(e)=>setFavorites(e.target.value)}
+ //onSubmit={handleSubmit}
 
 
 

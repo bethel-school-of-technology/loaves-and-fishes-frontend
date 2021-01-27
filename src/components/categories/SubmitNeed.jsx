@@ -13,8 +13,13 @@ function SubmitNeed() {
     const [city, setCity] = useState("")
     const [category, setCategory] = useState("")
     const [amount, setAmount] = useState("")
+
+    const [email, setEmail] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
+
     const token = { headers: { Authorization: localStorage.getItem('loginToken') } };
     const postApi = "http://localhost:8080/needposts";
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +28,9 @@ function SubmitNeed() {
             postContent,
             city,
             category,
-            amount
+            amount,
+            email,
+            phoneNumber
         };
         console.log(needs)
         //linking axios to back end using json as temp.
@@ -125,14 +132,47 @@ function SubmitNeed() {
                                         size="small"
                                         type="number"
                                                 
-                                    />
-                                </label>
 
-                                {/* button to submit and redirect to viewneeds */}
-                                <Button id="submitButton" type="submit" variant="outlined" color="primary" size="small"
-                                    style={{ display: "flex", flexDirection: "row", justifyContent: 'center', margin: 3 }} display="flex"
-                                    disableElevation display="inline" onClick={event => window.location.href = '/viewneeds'}>Add</Button>
-                            </form>
+                                                />
+                            </label>
+                            <label>
+            <TextField type="text" name="email" onChange={(e) => setEmail(e.target.value)} 
+                                                id="outlined-text"
+                                                style={{display:"flex", flexDirection:"row", justifyContent: 'center', margin: 3 }}
+                                                label="Email"
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                                multiline
+                                                size="small"
+                                                variant="outlined" 
+                                                display="inline"
+                                                />
+                            </label>
+                            <label>                         
+            <TextField inputProps={{className: 'digitsOnly' }}  name="phoneNumber" onChange={(e) => setPhoneNumber(e.target.value)} 
+                                                id="outlined-number"
+                                                label="Phone Number"
+                                                style={{display:"flex", flexDirection:"row", justifyContent: 'center', margin: 3 }}
+                                                InputLabelProps={{
+                                                    shrink: true,
+                                                }}
+                                                variant="outlined"
+                                                display="inline"
+                                                size="small"
+                                                type="number"
+                                                
+                                                />
+                            </label>
+                            
+
+                            {/* button to submit and redirect to viewneeds */}
+                            <Button id="submitButton" type="submit" variant="outlined" color="primary" size="small"
+                            style={{display:"flex", flexDirection:"row", justifyContent: 'center', margin: 3 }} display="flex"
+                            disableElevation display="inline"  
+                            // onClick={event => window.location.href='/viewneeds'}
+                            >Add</Button>
+                        </form>
                         
                         </div>
                     </div>

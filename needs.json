@@ -6,6 +6,9 @@
       "postContent": "I really need a million dollars",
       "city": "Saint Paul",
       "category": "Financial",
+
+      "amount": "1,000,000"
+
       "amount": "1,000,000",
       "email": "joanna.neitzell@gmail.com",
       "phoneNumber": "507-219-7073"
@@ -27,6 +30,7 @@
       "category": "asdf",
       "amount": "2344",
       "id": 5
+
     }
   ]
 }
