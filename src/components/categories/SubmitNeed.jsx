@@ -49,7 +49,7 @@ function SubmitNeed() {
         return (
             <div>
 
-                <img src={background} style={{ height: '50%', width: '75%', marginTop: '4vh' }} alt="" />
+                <img src={background} style={{ height: '50%', width: '65%', marginTop: '4vh' }} alt="" />
                 <div class="button1" className='mr-1'>
                     <Button style={{ marginRight: 8, marginTop: '3vh' }} variant="outline-dark" active href="./Register">
                         Register
