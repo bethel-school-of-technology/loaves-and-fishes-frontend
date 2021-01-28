@@ -36,7 +36,7 @@ function SubmitNeed() {
         };
         console.log(needs)
         //linking axios to back end using json as temp.
-        axios.post(postApi, needs, token)
+        axios.post(postApi, token, needs)
             .then(res => {
                 console.log(res);
                 // console.log(res.data);
