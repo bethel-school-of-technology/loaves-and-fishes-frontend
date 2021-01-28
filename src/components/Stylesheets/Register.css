@@ -94,6 +94,19 @@ margin-left: 10%;
 
 .h1style{ margin-top: 5%; margin-bottom: 50px;}
 
+.view{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:last-child{
+margin-bottom: 100px;
+}
+
+
+
 
 
 

@@ -137,14 +137,15 @@ function ViewNeeds() {
                         <div class="col-lg-5">
 
 
-                            <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', margin: 5 }}>View Needs</h1>
+                            <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>View Needs</h1>
 
-                            <ul>
+                            <ul style={{padding:'0'}}>
                                 {
                                     needs.map(need => {
 
                                         return (
-                                            <Card className={classes.root} variant="outlined">
+                                            
+                                            <Card className={classes.root} className="card" variant="outlined">
                                                 <CardContent>
                                                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                                                         {need.name}
@@ -192,10 +193,13 @@ function ViewNeeds() {
                                                         </IconButton>
                                                     </CardActions>
                                                 </CardContent>
-                                            </Card>
+                                                </Card>
+                                          
                                             //onChange={(e)=>setFavorites(e.target.value)}
                                             //onSubmit={handleSubmit}
+                                            
                                         )
+                                            
                                     })
                                 }
 
