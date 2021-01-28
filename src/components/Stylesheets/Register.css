@@ -87,6 +87,14 @@ body{
   background-size: cover; /* Resize the background image to cover the entire container */
 }
 
+p{
+margin-right: 10%;
+margin-left: 10%;
+}
+
+.h1style{ margin-top: 5%; margin-bottom: 50px;}
+
+
 
 
 
