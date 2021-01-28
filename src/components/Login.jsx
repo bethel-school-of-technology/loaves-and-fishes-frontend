@@ -17,8 +17,9 @@ class Login extends Component {
     var localloginComponent = [];
     localloginComponent.push(
       <MuiThemeProvider>
-        <div className="field">
-          <div className="formInput">
+     
+        <div className="field container">
+          <div className="formInput" className="loginStyle">
             <TextField
               hintText="Enter your Email"
               floatingLabelText="Email"
@@ -34,7 +35,8 @@ class Login extends Component {
             <br />
             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)} />
           </div>
-        </div>
+          </div>
+        
       </MuiThemeProvider>
     )
     this.state = {

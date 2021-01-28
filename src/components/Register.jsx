@@ -65,7 +65,7 @@ class Register extends Component {
             <AppBar showMenuIconButton={false}
              title="Register"
             />
-            <div className="formInput">
+            <div className="formInput registerStyle">
             <TextField
              hintText="Enter your First Name"
              floatingLabelText="First Name"

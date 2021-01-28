@@ -137,7 +137,7 @@ function ViewNeeds() {
                         <div class="col-lg-5">
 
 
-                            <h1 class="font-weight-light" className="h1text" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>View Needs</h1>
+                            <h1 class="font-weight-light" style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>View Needs</h1>
 
                             <ul style={{padding:'0'}}>
                                 {

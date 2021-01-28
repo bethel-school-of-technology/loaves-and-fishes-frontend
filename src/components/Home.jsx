@@ -24,7 +24,7 @@ function Home() {
   } else {
     return (
       <div className="home" >
-        <div class="container box" style={{ marginTop: '6%', width:'80%'}}>
+        <div class="container homeStyle" style={{ marginTop: '6%', width:'80%'}}>
 
           <div className="hometext" >
             <div class="col-lg-5" style={{ display: 'grid', justifyContent: 'center', margin: 'auto' }}>
